@@ -11,6 +11,7 @@
     "jest": "^26.0.1",
     "rollup": "^2.11.2",
     "rollup-plugin-copy": "^3.3.0",
+    "rollup-plugin-node-resolve": "^5.2.0",
     "rxjs": "^6.5.5",
     "tslib": "^2.0.0",
     "typescript": "^3.9.3"
