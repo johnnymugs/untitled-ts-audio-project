@@ -1,18 +1,17 @@
-import { Observable, timer } from 'rxjs'
+import { Observable, timer, interval } from 'rxjs'
+import { loopForever } from './util'
+import { merge, mergeMap, mergeMapTo, tap, map } from 'rxjs/operators'
 
-const loop = new Observable<number>(sub => {
-    const values = [327, 440]
-    timer(0,1000).subscribe({
-        next: n => {
-            const i = n % 2
-            sub.next(values[i])
-        }
-    })
-})
+const loop = loopForever([261.63, 293.66, 440.0])
+const aTimer = interval(1000).
+  pipe(
+      map(() => loop()),
+      tap(freq => console.log(new Date(), freq))    
+    )
 
 const audioCtx = new AudioContext()
 let oscillator = audioCtx.createOscillator()
 oscillator.connect(audioCtx.destination)
-oscillator.start()
 
-loop.subscribe(freq => oscillator.frequency.setValueAtTime(freq, audioCtx.currentTime))
+aTimer.subscribe(freq => oscillator.frequency.setValueAtTime(freq, audioCtx.currentTime))
+oscillator.start()

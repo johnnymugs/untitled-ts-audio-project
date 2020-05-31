@@ -3,18 +3,22 @@
   "scripts": {
     "build": "rollup -c",
     "start": "http-server ./build -o --cors",
-    "watch": "rollup -c -w"
+    "watch": "rollup -c -w",
+    "test": "jest"
   },
   "devDependencies": {
     "@rollup/plugin-typescript": "^4.1.2",
+    "@types/jest": "^25.2.3",
     "http-server": "^0.12.3",
     "jest": "^26.0.1",
     "rollup": "^2.11.2",
     "rollup-plugin-copy": "^3.3.0",
     "rollup-plugin-node-resolve": "^5.2.0",
-    "rxjs": "^6.5.5",
+    "ts-jest": "^26.1.0",
     "tslib": "^2.0.0",
     "typescript": "^3.9.3"
   },
-  "dependencies": {}
+  "dependencies": {
+    "rxjs": "^6.5.5"
+  }
 }
