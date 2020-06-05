@@ -1,8 +1,14 @@
 import { Observable, timer, interval } from 'rxjs'
 import { loopForever } from './util'
 import { merge, mergeMap, mergeMapTo, tap, map } from 'rxjs/operators'
+import { A4, halfStep } from './notes'
 
-const loop = loopForever([261.63, 293.66, 440.0])
+const C = halfStep(A4, -9)
+const D = halfStep(C, 2)
+const G = halfStep(A4, -2)
+
+const loop = loopForever([C, D, G])
+
 const aTimer = interval(1000).
   pipe(
       map(() => loop()),
